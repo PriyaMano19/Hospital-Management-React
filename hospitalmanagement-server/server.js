@@ -1,6 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const app = express();
+
+//import routes
+const userRoutes = require("./n_routes/n_users");
+
+//middleware
+app.use(bodyParser.json());
+
+app.use(userRoutes);
 
 const PORT = 8000;
 const DB_URL =
@@ -9,7 +18,7 @@ const DB_URL =
 mongoose
   .connect(DB_URL)
   .then(() => {
-    console.log("Database connected successfully!!!");
+    console.log("Database connected successfully!!");
   })
   .catch((err) => console.log("Database connection error", err));
 
