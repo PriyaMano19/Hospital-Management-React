@@ -36,6 +36,22 @@ router.get("/users", (req, res) => {
   });
 });
 
+//get a single user
+router.get("/user/:id", (req, res) => {
+  let userId = req.params.id;
+
+  Users.findById(userId, (err, user) => {
+    if (err) {
+      return res.status(400).json({ success: false, err });
+    }
+
+    return res.status(200).json({
+      success: true,
+      user,
+    });
+  });
+});
+
 //update user
 router.put("/user/update/:id", (req, res) => {
   Users.findByIdAndUpdate(
