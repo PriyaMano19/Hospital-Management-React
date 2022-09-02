@@ -1,5 +1,6 @@
 import './App.css';
 import NavBar from './componets/NavBar';
+import AddMedicines from './component/m_AddMedicines';
 import { BrowserRouter , Routes,Route } from 'react-router-dom';
 function App() {
   return (
@@ -8,7 +9,7 @@ function App() {
    <Routes>
     
    <Route   path='/nav' element={<NavBar/>}/>
-    
+   <Route exact path='/med' element={<AddMedicines/>}/>
     </Routes>
     </BrowserRouter>
     </div>
