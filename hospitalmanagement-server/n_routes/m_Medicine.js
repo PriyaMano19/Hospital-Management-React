@@ -33,6 +33,12 @@ router.post("/med",(req,res)=>{
     })
 })
 
+router.get('/show',(req,res)=>{
+    medicine.find()
+    .then(medicine=>res.json(medicine))
+    .catch(err=>res.status(404).json({ noMedicinesfound: 'No Medicines found' }))
+})
+
 
 
 module.exports = router;
