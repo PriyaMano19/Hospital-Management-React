@@ -11,6 +11,7 @@ export default class n_CreatePatient extends Component {
   }
 
   componentDidMount() {
+    console.log("nish");
     const id = this.props.match.params.id;
 
     axios.get(`http://localhost:8000/user/${id}`).then((res) => {

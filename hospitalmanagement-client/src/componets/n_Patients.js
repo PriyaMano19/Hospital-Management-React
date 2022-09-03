@@ -26,10 +26,42 @@ export default class n_Patients extends Component {
     });
   }
 
+  onDelete = (id) => {
+    axios.delete(`http://localhost:8000/user/delete/${id}`).then((res) => {
+      alert("Deleted Successfully");
+      this.retriveUsers();
+    });
+  };
+
+  handleSearchArea = (e) => {
+    const searchKey = e.currentTarget.value;
+
+    axios.get("http://localhost:8000/users").then((res) => {
+      if (res.data.success) {
+        this.filterData(res.data.existingUsers, searchKey);
+      }
+    });
+  };
+
+  filterData(users, searchKey) {
+    const result = users.filter((user) => user.userName.includes(searchKey));
+
+    this.setState({ users: result });
+  }
+
   render() {
     return (
       <div className="container">
         <p>All Patients</p>
+        <div className="col-lg-9 mt-2 mb-2">
+          <input
+            className="form-control"
+            type="search"
+            placeholder="search"
+            name="searchbar"
+            onChange={this.handleSearchArea}
+          ></input>
+        </div>
         <table class="table">
           <thead>
             <tr>
@@ -61,11 +93,18 @@ export default class n_Patients extends Component {
                 <td>{users.dob}</td>
                 <td>{users.status}</td>
                 <td>
-                  <a className="btn btn-warning" href="#">
+                  <a
+                    className="btn btn-warning"
+                    href={`/editPatient/${users._id}`}
+                  >
                     <i className="fas fa-edit"></i>&nbsp;Edit
                   </a>
                   &nbsp;
-                  <a className="btn btn-danger" href="#">
+                  <a
+                    className="btn btn-danger"
+                    href="#"
+                    onClick={() => this.onDelete(users._id)}
+                  >
                     <i className="fas fa-trash"></i>&nbsp;Delete
                   </a>
                 </td>

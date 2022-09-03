@@ -14,7 +14,8 @@ function App() {
           <Route path="/patients" element={<Patients />} />
           <Route path="/register" element={<Register />} />
           <Route path="/editPatient/:id" element={<EditPatient />} />
-          <Route path="/patient/:id" element={<Patient />} />
+          {/* <Route path="/patient/:id" element={<Patient />} /> */}
+          <Route path="/patient/:id" component={Patient}></Route>
         </Routes>
       </BrowserRouter>
     </div>
