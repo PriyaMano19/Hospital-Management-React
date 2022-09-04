@@ -6,7 +6,7 @@ var cors = require('cors');
 app.use(cors());
 //import routes
 const userRoutes = require("./n_routes/n_users");
-
+const medicine = require('./n_routes/m_Medicine');
 //middleware
 app.use(bodyParser.json());
 
@@ -16,9 +16,6 @@ const PORT = 8000;
 const DB_URL =
   "mongodb+srv://nishan:nisha123@cluster1.trfvymb.mongodb.net/SPM_DB?retryWrites=true&w=majority";
   
-//mathy router
-const medicine = require('./route/Medicine');
-app.use('/medicine', medicine);
 
 mongoose
   .connect(DB_URL)
@@ -27,7 +24,7 @@ mongoose
   })
   .catch((err) => console.log("Database connection error", err));
 //mathy router
-const medicine = require('./route/m_Medicine');
+
 app.use('/medicine', medicine);
 app.listen(PORT, () => {
   console.log(`App is running on ${PORT}`);

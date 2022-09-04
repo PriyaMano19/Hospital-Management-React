@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose=require('mongoose');
 
 
-const medicine=require('../models/m_Medicines');
+const medicine=require('../n_models/m_Medicines');
 
 
 
