@@ -62,7 +62,7 @@ function NavBar() {
             </div>
             <form className="d-flex" style={{ marginLeft: "260px" }}>
               <button className="btn btn-info tab" type="submit">
-                <a className="text-decoration-none text-dark " href="/Login">
+                <a className="text-decoration-none text-dark " href="/login">
                   Login
                 </a>
                 <i className="bi bi-box-arrow-in-right"></i>

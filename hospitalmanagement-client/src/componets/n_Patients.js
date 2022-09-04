@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Col, Container, Row } from "react-bootstrap";
+import logo from "../assets/logo.webp";
+import slide1 from "../assets/slide1.jpg";
+import slide2 from "../assets/slide2.jpg";
+import slide3 from "../assets/slide3.jpg";
 
 export default class n_Patients extends Component {
   constructor(props) {
@@ -52,7 +57,17 @@ export default class n_Patients extends Component {
   render() {
     return (
       <div className="container">
-        <p>All Patients</p>
+        <p
+          className="font-weight-bold"
+          style={{
+            color: "black",
+            width: "250px",
+            fontSize: "30px",
+            marginTop: "25px",
+          }}
+        >
+          All Patients
+        </p>
         <div className="col-lg-9 mt-2 mb-2">
           <input
             className="form-control"
@@ -60,58 +75,127 @@ export default class n_Patients extends Component {
             placeholder="search"
             name="searchbar"
             onChange={this.handleSearchArea}
+            style={{
+              width: "250px",
+            }}
           ></input>
         </div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">User Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Phone</th>
-              <th scope="col">Password</th>
-              <th scope="col">Dob</th>
-              <th scope="col">Status</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.users.map((users, index) => (
-              <tr key={index}>
-                <th scope="row">{index + 1}</th>
-                <td>
-                  <a
-                    href={`/patient/${users._id}`}
-                    style={{ textDecoration: "none" }}
-                  >
-                    {users.userName}
-                  </a>
-                </td>
-                <td>{users.email}</td>
-                <td>{users.phone}</td>
-                <td>{users.password}</td>
-                <td>{users.dob}</td>
-                <td>{users.status}</td>
-                <td>
-                  <a
+        <>
+          <Container className="mt-5">
+            <Row>
+              <Col lg={9} md={6} sm={12}>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">User Name</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Phone</th>
+                      <th scope="col">Password</th>
+                      <th scope="col">Dob</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {this.state.users.map((users, index) => (
+                      <tr key={index}>
+                        <th scope="row">{index + 1}</th>
+                        <td>
+                          <a
+                            href={`/patient/${users._id}`}
+                            style={{ textDecoration: "none" }}
+                          >
+                            {users.userName}
+                          </a>
+                        </td>
+                        <td>{users.email}</td>
+                        <td>{users.phone}</td>
+                        <td>{users.password}</td>
+                        <td>{users.dob}</td>
+                        <td>
+                          {/* <a
                     className="btn btn-warning"
                     href={`/editPatient/${users._id}`}
                   >
                     <i className="fas fa-edit"></i>&nbsp;Edit
-                  </a>
-                  &nbsp;
+                  </a> */}
+                          &nbsp;
+                          <a
+                            className="btn btn-danger"
+                            href="#"
+                            onClick={() => this.onDelete(users._id)}
+                          >
+                            <i className="fas fa-trash"></i>&nbsp;Delete
+                          </a>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </Col>
+              <Col lg={3} md={6} sm={12}>
+                <h3>ZONE</h3>
+                <div
+                  id="carouselExampleControls"
+                  class="carousel slide"
+                  data-ride="carousel"
+                >
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img
+                        class="d-block w-100"
+                        src={slide1}
+                        alt="First slide"
+                      ></img>
+                    </div>
+                    <div class="carousel-item">
+                      <img
+                        class="d-block w-100"
+                        src={slide2}
+                        alt="Second slide"
+                        style={{
+                          width: "250px",
+                          height: "200px",
+                        }}
+                      ></img>
+                    </div>
+                    <div class="carousel-item">
+                      <img
+                        class="d-block w-100"
+                        src={slide3}
+                        alt="Third slide"
+                      ></img>
+                    </div>
+                  </div>
                   <a
-                    className="btn btn-danger"
-                    href="#"
-                    onClick={() => this.onDelete(users._id)}
+                    class="carousel-control-prev"
+                    href="#carouselExampleControls"
+                    role="button"
+                    data-slide="prev"
                   >
-                    <i className="fas fa-trash"></i>&nbsp;Delete
+                    <span
+                      class="carousel-control-prev-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="sr-only">Previous</span>
                   </a>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                  <a
+                    class="carousel-control-next"
+                    href="#carouselExampleControls"
+                    role="button"
+                    data-slide="next"
+                  >
+                    <span
+                      class="carousel-control-next-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </>
       </div>
     );
   }
