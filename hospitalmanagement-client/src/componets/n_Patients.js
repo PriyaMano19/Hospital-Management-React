@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Col, Container, Row } from "react-bootstrap";
 import logo from "../assets/logo.webp";
-import slide1 from "../assets/slide1.jpg";
-import slide2 from "../assets/slide2.jpg";
-import slide3 from "../assets/slide3.jpg";
+import slide1 from "../assets/n_slide1.jpg";
+import slide2 from "../assets/n_slide2.jpg";
+import slide3 from "../assets/n_slide3.jpg";
 
 export default class n_Patients extends Component {
   constructor(props) {
