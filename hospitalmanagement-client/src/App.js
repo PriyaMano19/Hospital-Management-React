@@ -19,10 +19,11 @@ function App() {
           {/* <Route path="/nav" element={<NavBar />} /> */}
           <Route path="/labdash" element={<P_Dashboard />} />
           <Route path="/book" element={<P_Booking />} />
-          <Route path="/admin" element={<P_ViewAllAppointments />} />
+          <Route path="/" element={<P_ViewAllAppointments />} />
           <Route path="/form" element={<P_Form />} />
           <Route path="/edit/:id" element={<P_UserEdit />} />
-          <Route path="/view/:id" element={<P_Details />} />
+          <Route path="/view" element={<P_Details />} />
+          {/* <Route path="/view/:id" element={<P_Details />} /> */}
         </Routes>
       </BrowserRouter>
     </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { UserOutlined } from "@ant-design/icons";
 import { EditOutlined } from "@ant-design/icons";
 import { HomeOutlined } from "@ant-design/icons";
@@ -6,7 +6,12 @@ import { PhoneOutlined } from "@ant-design/icons";
 import { LeftCircleOutlined } from "@ant-design/icons";
 import { CalendarOutlined } from "@ant-design/icons";
 import { Input, Button } from "antd";
+import { NavLink, useParams, useNavigate } from "react-router-dom";
+import { updatedata } from "./context/ContextProvider";
 function P_UserEdit() {
+  const { updata, setUPdata } = useContext(updatedata);
+
+  const history = useNavigate();
   const [inpval, setINP] = useState({
     name: "",
     age: "",
@@ -15,7 +20,13 @@ function P_UserEdit() {
     gender: "",
     date: "",
   });
-
+  function GetDateOnly(date) {
+    if (!date) {
+      return "-";
+    }
+    let newDate = date.split("T");
+    return newDate[0];
+  }
   const setdata = (e) => {
     console.log(e.target.value);
     const { name, value } = e.target;
@@ -26,6 +37,64 @@ function P_UserEdit() {
       };
     });
   };
+
+  const { id } = useParams("");
+  console.log(id);
+
+  const getdata = async () => {
+    const res = await fetch(`http://localhost:8000/getpatient/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await res.json();
+    console.log(data);
+
+    if (res.status === 422 || !data) {
+      console.log("error ");
+    } else {
+      setINP(data);
+      console.log("get data");
+    }
+  };
+
+  useEffect(() => {
+    getdata();
+  }, []);
+
+  const updatepatient = async (e) => {
+    e.preventDefault();
+
+    const { name, age, address, mobile, gender, date } = inpval;
+
+    const res2 = await fetch(`http://localhost:8000/updatepatient/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        age,
+        address,
+        mobile,
+        gender,
+        date,
+      }),
+    });
+
+    const data2 = await res2.json();
+    console.log(data2);
+
+    if (res2.status === 422 || !data2) {
+      alert("fill the data");
+    } else {
+      history("/");
+      alert("data updated");
+    }
+  };
+
   return (
     <div class="h-14 bg-gradient-to-r from-cyan-500 to-blue-500">
       <div className="container mt-5 bg-white shadow-xl rounded border-2 border-gray-600 ">
@@ -105,6 +174,7 @@ function P_UserEdit() {
                 size="large"
                 name="mobile"
                 type="number"
+                value={inpval.mobile}
                 onChange={setdata}
               />
             </div>
@@ -123,18 +193,13 @@ function P_UserEdit() {
               </select>
             </div>
             <div class="mb-3 col-lg-6 col-md-6 col-12">
-              <label
-                for="exampleInputPassword1"
-                class="form-label font-bold text-lg"
-              >
-                Date
-              </label>
+              <label class="form-label font-bold text-lg">Date</label>
               <Input
                 prefix={<CalendarOutlined />}
                 size="large"
                 name="date"
                 type="date"
-                value={inpval.date}
+                value={GetDateOnly(inpval.date)}
                 onChange={setdata}
               />
               <div class="flex justify-end">
@@ -142,7 +207,11 @@ function P_UserEdit() {
                   <button type="button" class="btn btn-outline-danger">
                     Cancel
                   </button>
-                  <button type="button" class="btn btn-primary">
+                  <button
+                    type="button"
+                    onClick={updatepatient}
+                    class="btn btn-primary"
+                  >
                     Update
                   </button>
                 </div>

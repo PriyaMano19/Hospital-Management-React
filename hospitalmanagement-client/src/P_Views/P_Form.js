@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserOutlined } from "@ant-design/icons";
 import { EditOutlined } from "@ant-design/icons";
 import { HomeOutlined } from "@ant-design/icons";
@@ -10,7 +10,7 @@ import { Input, Button } from "antd";
 import { adddata } from "./context/ContextProvider";
 const P_Form = () => {
   const { udata, setUdata } = useContext(adddata);
-
+  const history = useNavigate();
   const [inpval, setINP] = useState({
     name: "",
     age: "",
@@ -34,9 +34,9 @@ const P_Form = () => {
   const addinpdata = async (e) => {
     e.preventDefault();
 
-    const { name, age, Address, mobile, gender, date } = inpval;
+    const { name, age, address, mobile, gender, date } = inpval;
 
-    const res = await fetch("/form", {
+    const res = await fetch("http://localhost:8000/form", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +44,7 @@ const P_Form = () => {
       body: JSON.stringify({
         name,
         age,
-        Address,
+        address,
         mobile,
         gender,
         date,
@@ -58,6 +58,7 @@ const P_Form = () => {
       console.log("error ");
       alert("error");
     } else {
+      history("/labdash");
       console.log("data added");
       alert("data added");
     }
@@ -74,7 +75,7 @@ const P_Form = () => {
             <LeftCircleOutlined style={{ fontSize: "26px" }} /> Back
           </p>
         </div>
-        <form className="mt-4">
+        <form className="mt-4 was-validated">
           <div className="row">
             <div class="mb-3 col-lg-6 col-md-6 col-12">
               <label
@@ -91,6 +92,7 @@ const P_Form = () => {
                 type="text"
                 value={inpval.name}
                 onChange={setdata}
+                required
               />
             </div>
 
@@ -109,6 +111,7 @@ const P_Form = () => {
                 size="large"
                 type="number"
                 onChange={setdata}
+                required
               />
             </div>
             <div class="mb-3 col-lg-6 col-md-6 col-12">
@@ -126,6 +129,7 @@ const P_Form = () => {
                 name="address"
                 value={inpval.address}
                 onChange={setdata}
+                required
               />
             </div>
             <div class="mb-3 col-lg-6 col-md-6 col-12">
@@ -144,6 +148,7 @@ const P_Form = () => {
                 type="number"
                 value={inpval.mobile}
                 onChange={setdata}
+                required
               />
             </div>
             <div class="mb-3 col-lg-6 col-md-6 col-12">
@@ -174,6 +179,7 @@ const P_Form = () => {
                 type="date"
                 value={inpval.date}
                 onChange={setdata}
+                required
               />
               <div class="flex justify-end">
                 <div class="flex space-x-4 mt-5 ">
