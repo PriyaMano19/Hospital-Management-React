@@ -134,6 +134,15 @@ export default class n_Patients extends Component {
                 </table>
               </Col>
               <Col lg={3} md={6} sm={12}>
+                <button
+                  className="btn btn-success text-left"
+                  style={{ marginRight: "210px" }}
+                >
+                  {" "}
+                  <i className="fas fa-print"></i>&nbsp;&nbsp;Print
+                </button>
+                <br></br>
+                <hr></hr>
                 <h3>ZONE</h3>
                 <div
                   id="carouselExampleControls"

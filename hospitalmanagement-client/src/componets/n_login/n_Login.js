@@ -68,7 +68,11 @@ export default class n_Login extends Component {
                   Login
                 </label>
                 <div
-                  style={{ fontSize: 16, color: "red", fontStyle: "italic" }}
+                  style={{
+                    fontSize: 18,
+                    color: "red",
+                    fontStyle: "italic",
+                  }}
                 >
                   {this.state.emailError}
                 </div>

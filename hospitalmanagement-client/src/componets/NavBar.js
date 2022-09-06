@@ -54,8 +54,12 @@ function NavBar() {
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/about">
-                    About Us
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="/patients"
+                  >
+                    Users
                   </a>
                 </li>
               </ul>
