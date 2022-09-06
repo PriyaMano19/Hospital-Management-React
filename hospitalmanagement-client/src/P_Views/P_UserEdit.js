@@ -90,8 +90,9 @@ function P_UserEdit() {
     if (res2.status === 422 || !data2) {
       alert("fill the data");
     } else {
-      history("/");
-      alert("data updated");
+      history("/view");
+      setUPdata(data2);
+      // alert("data updated");
     }
   };
 

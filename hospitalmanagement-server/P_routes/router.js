@@ -79,4 +79,17 @@ router.patch("/updatepatient/:id", async (req, res) => {
   }
 });
 
+// delete appointment
+router.delete("/deletepatient/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const deletpatient = await Patients.findByIdAndDelete({ _id: id });
+    console.log(deletpatient);
+    res.status(201).json(deletpatient);
+  } catch (error) {
+    res.status(422).json(error);
+  }
+});
+
 module.exports = router;

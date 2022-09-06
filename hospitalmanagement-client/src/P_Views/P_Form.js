@@ -59,8 +59,8 @@ const P_Form = () => {
       alert("error");
     } else {
       history("/labdash");
-      console.log("data added");
-      alert("data added");
+      setUdata(data);
+      // alert("data added");
     }
   };
 
