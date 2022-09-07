@@ -31,7 +31,7 @@ function Dashboard() {
         ""
       )}
       <div className="site-card-wrapper  mr-3 ml-3 mb-5 ">
-        <p className="text-center font-bold text-5xl text-blue-800 hover:text-blue-700 text-opacity-100 hover:underline">
+        <p className="text-center font-bold text-5xl text-blue-800 hover:text-blue-700 text-opacity-100 hover:underline mt-2">
           Laboratory Testing Appointments
         </p>
         <Row gutter={12}>

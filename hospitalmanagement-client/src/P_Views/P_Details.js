@@ -3,15 +3,14 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CreateIcon from "@mui/icons-material/Create";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import { NavLink, useParams, useHistory } from "react-router-dom";
-import { UserOutlined } from "@ant-design/icons";
-import { EditOutlined } from "@ant-design/icons";
-import { HomeOutlined } from "@ant-design/icons";
-import { PhoneOutlined } from "@ant-design/icons";
-import { SnippetsOutlined } from "@ant-design/icons";
-import { UsergroupAddOutlined } from "@ant-design/icons";
-import { CalendarOutlined } from "@ant-design/icons";
-import { adddata, updatedata, deldata } from "./context/ContextProvider";
+import { NavLink, useParams } from "react-router-dom";
+import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import PersonIcon from "@mui/icons-material/Person";
+import HomeIcon from "@mui/icons-material/Home";
+import WcIcon from "@mui/icons-material/Wc";
+import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
+import SummarizeIcon from "@mui/icons-material/Summarize";
+import { updatedata, deldata } from "./context/ContextProvider";
 function P_Details() {
   const { updata, setUPdata } = useContext(updatedata);
 
@@ -113,8 +112,11 @@ function P_Details() {
         {getpatientdata.map((element) => {
           return (
             <>
-              <div class="col lg-4 md-4">
-                <Card sx={{ maxWidth: 600 }} className="mt-3 ">
+              <div class="cards">
+                <Card
+                  sx={{ maxWidth: 600 }}
+                  className="mt-5 ml-5 border-primary  "
+                >
                   <CardContent>
                     <div class="grid justify-items-end ...">
                       <div className="add_btn ">
@@ -141,36 +143,40 @@ function P_Details() {
                             alt="profile"
                             className="-mt-8"
                           />
-                          {/* <p className="mt-3 font-bold text-lg -mt-2">
-                      <SnippetsOutlined />
-                    Report Date: <span>{GetDateOnly(element.rdate)}</span>
-                  </p> */}
+                          <p className="text-center font-bold text-2xl text-blue-600">
+                            Zone Hospital
+                          </p>
                         </div>
+
                         <p className="mt-3 font-bold text-lg">
-                          <EditOutlined />
+                          <CreateIcon />
                           Full Name: <span>{element.name}</span>
                         </p>
                         <p className="mt-3 font-bold text-lg">
-                          <UserOutlined />
+                          <PersonIcon />
                           Age: <span>{element.age}</span>
                         </p>
                         <p className="mt-3 font-bold text-lg">
-                          <HomeOutlined />
+                          <HomeIcon />
                           Address: <span>{element.address}</span>
                         </p>
                       </div>
 
                       <div className="right_view  col-lg-6 col-md-6 col-12  mt-5 ">
+                        <p className="mt-3 font-bold text-lg -mt-3">
+                          <SummarizeIcon />
+                          Report Date: <span>2022-09-23</span>
+                        </p>
                         <p className="mt-3 font-bold text-lg">
-                          <CalendarOutlined />
+                          <CalendarTodayIcon />
                           Date: <span>{GetDateOnly(element.date)}</span>
                         </p>
                         <p className="mt-3 font-bold text-lg">
-                          <UsergroupAddOutlined />
+                          <WcIcon />
                           Gender: <span>{element.gender}</span>
                         </p>
                         <p className="mt-3 font-bold text-lg">
-                          <PhoneOutlined />
+                          <PhoneEnabledIcon />
                           Phone Number: <span>{element.mobile}</span>
                         </p>
                       </div>

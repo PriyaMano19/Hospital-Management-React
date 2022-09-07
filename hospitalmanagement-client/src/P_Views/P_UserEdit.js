@@ -6,7 +6,7 @@ import { PhoneOutlined } from "@ant-design/icons";
 import { LeftCircleOutlined } from "@ant-design/icons";
 import { CalendarOutlined } from "@ant-design/icons";
 import { Input, Button } from "antd";
-import { NavLink, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { updatedata } from "./context/ContextProvider";
 function P_UserEdit() {
   const { updata, setUPdata } = useContext(updatedata);
@@ -103,9 +103,11 @@ function P_UserEdit() {
           Edit Your Appointment
         </p>
         <div class="btn-group-toggle" data-toggle="buttons">
-          <p className="text-left font-bold text-xl text-blue-800 hover:text-blue-700 text-opacity-100 -mt-8 ml-3">
-            <LeftCircleOutlined style={{ fontSize: "26px" }} /> Back
-          </p>
+          <Link to="/view">
+            <p className="text-left font-bold text-xl text-blue-800 hover:text-blue-700 text-opacity-100 -mt-8 ml-3">
+              <LeftCircleOutlined style={{ fontSize: "26px" }} /> Back
+            </p>
+          </Link>
         </div>
         <form className="mt-4">
           <div className="row">

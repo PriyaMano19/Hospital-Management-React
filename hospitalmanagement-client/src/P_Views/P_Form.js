@@ -1,12 +1,13 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { UserOutlined } from "@ant-design/icons";
 import { EditOutlined } from "@ant-design/icons";
 import { HomeOutlined } from "@ant-design/icons";
 import { PhoneOutlined } from "@ant-design/icons";
 import { LeftCircleOutlined } from "@ant-design/icons";
 import { CalendarOutlined } from "@ant-design/icons";
-import { Input, Button } from "antd";
+
+import { Input, Button, Form } from "antd";
 import { adddata } from "./context/ContextProvider";
 const P_Form = () => {
   const { udata, setUdata } = useContext(adddata);
@@ -71,11 +72,13 @@ const P_Form = () => {
           Get Appointment
         </p>
         <div class="btn-group-toggle" data-toggle="buttons">
-          <p className="text-left font-bold text-xl text-blue-800 hover:text-blue-700 text-opacity-100 -mt-8 ml-3">
-            <LeftCircleOutlined style={{ fontSize: "26px" }} /> Back
-          </p>
+          <Link to="/labdash">
+            <p className="text-left font-bold text-xl text-blue-800 hover:text-blue-700 text-opacity-100 -mt-8 ml-3">
+              <LeftCircleOutlined style={{ fontSize: "26px" }} /> Back
+            </p>
+          </Link>
         </div>
-        <form className="mt-4 was-validated">
+        <form className="mt-4 ">
           <div className="row">
             <div class="mb-3 col-lg-6 col-md-6 col-12">
               <label
@@ -84,16 +87,25 @@ const P_Form = () => {
               >
                 Full Name
               </label>
-              <Input
-                prefix={<EditOutlined />}
-                placeholder="Full Name"
-                size="large"
-                name="name"
-                type="text"
-                value={inpval.name}
-                onChange={setdata}
-                required
-              />
+              <Form.Item
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your Name!",
+                  },
+                ]}
+              >
+                <Input
+                  prefix={<EditOutlined />}
+                  placeholder="Full Name"
+                  size="large"
+                  name="name"
+                  type="text"
+                  value={inpval.name}
+                  onChange={setdata}
+                  required
+                />
+              </Form.Item>
             </div>
 
             <div class="mb-3 col-lg-6 col-md-6 col-12">

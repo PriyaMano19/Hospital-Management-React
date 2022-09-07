@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import CreateIcon from "@mui/icons-material/Create";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import { adddata, updatedata, deldata } from "./context/ContextProvider";
 function P_ViewAllAppointments() {
   const { udata, setUdata } = useContext(adddata);
@@ -132,7 +133,8 @@ function P_ViewAllAppointments() {
                 <th scope="col">MobileNumber</th>
                 <th scope="col">Date</th>
                 <th scope="col">Report Date</th>
-                <th scope="col">Cancel</th>
+                {/* <th scope="col">Cancel</th> */}
+                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -168,6 +170,11 @@ function P_ViewAllAppointments() {
                             <CreateIcon />
                           </button>
                         </NavLink>
+                        {/* <NavLink to={`edit/${element._id}`}>
+                          <button className="btn btn-primary">
+                            <CalendarTodayIcon />
+                          </button>
+                        </NavLink> */}
                         <button
                           className="btn btn-danger"
                           onClick={() => deletepatient(element._id)}
