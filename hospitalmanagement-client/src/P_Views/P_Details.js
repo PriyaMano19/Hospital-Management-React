@@ -114,8 +114,8 @@ function P_Details() {
             <>
               <div class="cards">
                 <Card
-                  sx={{ maxWidth: 600 }}
-                  className="mt-5 ml-5 border-primary  "
+                  sx={{ maxWidth: 1500 }}
+                  className="mt-5 ml-8 border-primary  "
                 >
                   <CardContent>
                     <div class="grid justify-items-end ...">

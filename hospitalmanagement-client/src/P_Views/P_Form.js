@@ -103,7 +103,6 @@ const P_Form = () => {
                   type="text"
                   value={inpval.name}
                   onChange={setdata}
-                  required
                 />
               </Form.Item>
             </div>
@@ -123,7 +122,6 @@ const P_Form = () => {
                 size="large"
                 type="number"
                 onChange={setdata}
-                required
               />
             </div>
             <div class="mb-3 col-lg-6 col-md-6 col-12">
@@ -141,7 +139,6 @@ const P_Form = () => {
                 name="address"
                 value={inpval.address}
                 onChange={setdata}
-                required
               />
             </div>
             <div class="mb-3 col-lg-6 col-md-6 col-12">
@@ -160,7 +157,6 @@ const P_Form = () => {
                 type="number"
                 value={inpval.mobile}
                 onChange={setdata}
-                required
               />
             </div>
             <div class="mb-3 col-lg-6 col-md-6 col-12">
@@ -191,21 +187,21 @@ const P_Form = () => {
                 type="date"
                 value={inpval.date}
                 onChange={setdata}
-                required
               />
-              <div class="flex justify-end">
-                <div class="flex space-x-4 mt-5 ">
-                  <button type="button" class="btn btn-outline-danger">
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    class="btn btn-primary"
-                    onClick={addinpdata}
-                  >
-                    Book Now
-                  </button>
-                </div>
+            </div>
+
+            <div class="flex justify-end">
+              <div class="flex space-x-4 mb-5 mt-3">
+                <button type="button" class="btn btn-outline-danger">
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  onClick={addinpdata}
+                >
+                  Book Now
+                </button>
               </div>
             </div>
           </div>

@@ -4,7 +4,6 @@ const app = express();
 const patients = require("./P_models/PatientsSchema");
 const cors = require("cors");
 const router = require("./P_routes/router");
-
 const PORT = 8000;
 const DB_URL =
   "mongodb+srv://nishan:nisha123@cluster1.trfvymb.mongodb.net/SPM_DB?retryWrites=true&w=majority";

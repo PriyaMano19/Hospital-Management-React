@@ -17,6 +17,7 @@ const patientsSchema = new mongoose.Schema({
     type: Number,
     required: true,
     unique: true,
+    maxLength: 10,
   },
   gender: {
     type: String,

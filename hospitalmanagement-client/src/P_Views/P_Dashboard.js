@@ -42,6 +42,7 @@ function Dashboard() {
                   Complete Blood Test
                 </p>
                 <Image width={300} src={img1} />
+
                 <div className="flex flex-col -space-y-6 ...">
                   <p className="text-left text-lg font-semibold">
                     Pre Test Information

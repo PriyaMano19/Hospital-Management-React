@@ -10,8 +10,8 @@ function NavBar() {
           src={logo}
           style={{ height: "50px", width: "50px" }}
         />
-        <span className="text-info text-uppercase">
-          <h2>&nbsp;ZONE</h2>
+        <span className="text-uppercase text-white text-2xl mt-3 font-bold">
+          <p>&nbsp;ZONE</p>
         </span>
 
         <div className="container-fluid">
@@ -43,6 +43,11 @@ function NavBar() {
                   </a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/view">
+                    View Lab Appointments
+                  </a>
+                </li>
+                <li class="nav-item">
                   <a
                     class="nav-link active"
                     aria-current="page"
@@ -67,18 +72,18 @@ function NavBar() {
             <form className="d-flex" style={{ marginLeft: "260px" }}>
               <button className="btn btn-info tab" type="submit">
                 <a className="text-decoration-none text-dark " href="/Login">
-                  Login
+                  Profile
                 </a>
                 <i className="bi bi-box-arrow-in-right"></i>
               </button>
-              &nbsp;&nbsp;
+              {/* &nbsp;&nbsp;
               <button className="btn btn-outline-info " type="submit">
                 <a className="text-decoration-none text-white" href="/add">
                   Registration
                 </a>
                 <i className="bi bi-save2"></i>
               </button>
-              &nbsp;&nbsp;
+              &nbsp;&nbsp; */}
             </form>
           </div>
         </div>
