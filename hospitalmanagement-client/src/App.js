@@ -5,6 +5,7 @@ import Register from "./componets/n_CreatePatient";
 import EditPatient from "./componets/n_EditPatient";
 import Patient from "./componets/n_DetailPatient";
 import Login from "./componets/n_login/n_Login";
+import Home from "./componets/n_home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/editPatient/:id" element={<EditPatient />} />
           <Route path="/patient/:id" element={<Patient />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -28,19 +28,19 @@ export default class n_Login extends Component {
       emailError = "Invalid Email or Password";
     }
 
-    if (!this.state.password.includes("1")) {
-      passwordError = "invalid Password";
-    }
+    // if (!this.state.password.includes("1")) {
+    //   passwordError = "invalid Password";
+    // }
 
     if (emailError) {
       this.setState({ emailError });
       return false;
     }
 
-    if (passwordError) {
-      this.setState({ passwordError });
-      return false;
-    }
+    // if (passwordError) {
+    //   this.setState({ passwordError });
+    //   return false;
+    // }
 
     return true;
   };
@@ -118,7 +118,7 @@ export default class n_Login extends Component {
 
                 <div className="text-left at-3">
                   <a href="/register">
-                    <small className="account">Already have an account</small>
+                    <small className="account">Create an account</small>
                   </a>
                 </div>
               </Form>

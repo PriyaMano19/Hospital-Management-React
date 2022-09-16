@@ -19,11 +19,7 @@ function NavBar() {
             <div className="container">
               <ul className="navbar-nav me-auto mb-6 mb-lg-0">
                 <li class="nav-item">
-                  <a
-                    class="nav-link active"
-                    aria-current="page"
-                    href="/dashboad"
-                  >
+                  <a class="nav-link active" aria-current="page" href="/home">
                     Home
                   </a>
                 </li>
@@ -59,7 +55,7 @@ function NavBar() {
                     aria-current="page"
                     href="/patients"
                   >
-                    Users
+                    Patients
                   </a>
                 </li>
               </ul>
