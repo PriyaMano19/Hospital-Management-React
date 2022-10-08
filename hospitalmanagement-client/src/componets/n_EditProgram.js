@@ -1,10 +1,12 @@
 import React, { Component } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Col, Container, Row, Form, Button } from "react-bootstrap";
 import logo from "../assets/logo.webp";
 import register from "../assets/n_register.svg";
 import "./n_login/n_Login.css";
-export default class n_CreateProgram extends Component {
+
+export default class n_EditProgram extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,7 +30,8 @@ export default class n_CreateProgram extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-
+    //const id = this.props.match.params.id;
+    const id = "6326cc429c3a1d51a4ba767a";
     const { title, ageGroup, gender, sample, desc, price } = this.state;
 
     const data = {
@@ -42,22 +45,42 @@ export default class n_CreateProgram extends Component {
 
     console.log(data);
 
-    axios.post("http://localhost:8000/program/save", data).then((res) => {
+    axios
+      .put(`http://localhost:8000/program/update/${id}`, data)
+      .then((res) => {
+        if (res.data.success) {
+          this.setState({
+            title: "",
+            ageGroup: "",
+            gender: "",
+            sample: "",
+            desc: "",
+            price: "",
+          });
+        }
+      });
+  };
+
+  componentDidMount() {
+    console.log("nish");
+    //const id = this.props.match.params.id;
+    const id = "6326cc429c3a1d51a4ba767a";
+
+    axios.get(`http://localhost:8000/program/${id}`).then((res) => {
+      //console.log("Fail");
       if (res.data.success) {
         this.setState({
-          title: "",
-          ageGroup: "",
-          gender: "",
-          sample: "",
-          desc: "",
-          price: "",
+          title: res.data.program.title,
+          ageGroup: res.data.program.ageGroup,
+          gender: res.data.program.gender,
+          sample: res.data.program.sample,
+          desc: res.data.program.desc,
+          price: res.data.program.price,
         });
-        alert("Registered Successfully");
-      } else {
-        alert("Registration Failed!!!");
+        console.log(this.state.program);
       }
     });
-  };
+  }
 
   render() {
     return (
@@ -66,7 +89,7 @@ export default class n_CreateProgram extends Component {
           <form class="text-left was-validated">
             <img class="icon-img-R" src={logo} />
             <label for="Register" className="title font-weight-bold">
-              Medical Program
+              Edit Medical Program
             </label>
             <Row>
               <Col lg={6} md={6} sm={12}>

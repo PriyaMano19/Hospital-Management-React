@@ -115,12 +115,12 @@ export default class n_programs extends Component {
                         <td>{programs.desc}</td>
                         <td>{programs.price}</td>
                         <td>
-                          {/* <a
-                    className="btn btn-warning"
-                    href={`/editPatient/${users._id}`}
-                  >
-                    <i className="fas fa-edit"></i>&nbsp;Edit
-                  </a> */}
+                          <a
+                            className="btn btn-warning"
+                            href={`/editProgram/${programs._id}`}
+                          >
+                            <i className="fas fa-edit"></i>&nbsp;Edit
+                          </a>
                           &nbsp;
                           <a
                             className="btn btn-danger"

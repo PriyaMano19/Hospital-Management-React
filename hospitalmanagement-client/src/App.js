@@ -9,6 +9,7 @@ import Home from "./componets/n_home";
 import Programs from "./componets/n_Programs";
 import PrintPatients from "./componets/n_PrintPatients";
 import CreateProgram from "./componets/n_CreateProgram";
+import EditProgram from "./componets/n_EditProgram";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Home />} />
           <Route path="/programs" element={<Programs />} />
+          <Route path="/editProgram/:id" element={<EditProgram />} />
           <Route path="/createProgram" element={<CreateProgram />} />
         </Routes>
       </BrowserRouter>

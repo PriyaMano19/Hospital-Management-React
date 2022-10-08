@@ -137,12 +137,12 @@ export default class n_Patients extends Component {
                         <td>{users.password}</td>
                         <td>{users.dob}</td>
                         <td>
-                          {/* <a
-                    className="btn btn-warning"
-                    href={`/editPatient/${users._id}`}
-                  >
-                    <i className="fas fa-edit"></i>&nbsp;Edit
-                  </a> */}
+                          <a
+                            className="btn btn-warning"
+                            href={`/editPatient/${users._id}`}
+                          >
+                            <i className="fas fa-edit"></i>&nbsp;Edit
+                          </a>
                           &nbsp;
                           <a
                             className="btn btn-danger"
