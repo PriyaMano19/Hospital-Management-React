@@ -90,7 +90,8 @@ export default class n_CreateProgram extends Component {
                   <div class="valid-feedback font-weight-bold">Looks good!</div>
                 </div>
                 <div class="form-group">
-                  <input
+                  <label for="patient name">Age group</label>
+                  {/* <input
                     type="text"
                     id="ageGroup"
                     name="ageGroup"
@@ -100,7 +101,20 @@ export default class n_CreateProgram extends Component {
                     onChange={this.handleInputChange}
                     pattern=".{8,}"
                     required
-                  />
+                  /> */}
+                  <select
+                    class="form-control"
+                    id="ageGroup"
+                    name="ageGroup"
+                    value={this.state.ageGroup}
+                    onChange={this.handleInputChange}
+                  >
+                    <option>1 - 8</option>
+                    <option>9 - 18</option>
+                    <option>19 - 30</option>
+                    <option>45+</option>
+                    <option>Any age group</option>
+                  </select>
 
                   <div class="invalid-feedback font-weight-bold">
                     Invalid Input.
@@ -109,7 +123,7 @@ export default class n_CreateProgram extends Component {
                 </div>
                 <div class="row">
                   <div class="form-group col-md-6 mb-3">
-                    <label for="phone">gender</label>
+                    <label for="phone">Gender</label>
                     {/* <input
                       type="text"
                       id="gender"
@@ -140,7 +154,7 @@ export default class n_CreateProgram extends Component {
                     </div>
                   </div>
                   <div class="form-group col-md-6 mb-3">
-                    <label for="phone">sample</label>
+                    <label for="phone">Sample</label>
                     <input
                       type="text"
                       id="sample"
@@ -174,7 +188,7 @@ export default class n_CreateProgram extends Component {
 
               <Col lg={6} md={6} sm={12}>
                 <div class="form-group">
-                  <label for="phone">desc</label>
+                  <label for="phone">Description</label>
                   <textarea
                     type="text"
                     id="desc"
@@ -194,7 +208,7 @@ export default class n_CreateProgram extends Component {
                 </div>
 
                 <div class="form-group">
-                  <label for="phone">price</label>
+                  <label for="phone">Price</label>
                   <input
                     type="text"
                     id="price"
@@ -216,6 +230,11 @@ export default class n_CreateProgram extends Component {
                   type="submit"
                   class="btn btn-success text-center btn-block"
                   onClick={this.onSubmit}
+                  style={{
+                    width: "250px",
+                    marginLeft: "400px",
+                    marginTop: "30px",
+                  }}
                 >
                   Submit
                 </button>

@@ -5,6 +5,7 @@ import { Col, Container, Row, Form, Button } from "react-bootstrap";
 import logo from "../assets/logo.webp";
 import register from "../assets/n_register.svg";
 import "./n_login/n_Login.css";
+import { Link, useNavigate } from "react-router-dom";
 
 export default class n_EditProgram extends Component {
   constructor(props) {
@@ -33,7 +34,7 @@ export default class n_EditProgram extends Component {
     //const id = this.props.match.params.id;
     const id = "6326cc429c3a1d51a4ba767a";
     const { title, ageGroup, gender, sample, desc, price } = this.state;
-
+    const navigate = useNavigate;
     const data = {
       title: title,
       ageGroup: ageGroup,
@@ -57,6 +58,7 @@ export default class n_EditProgram extends Component {
             desc: "",
             price: "",
           });
+          alert("Updated Successfully");
         }
       });
   };
@@ -113,7 +115,8 @@ export default class n_EditProgram extends Component {
                   <div class="valid-feedback font-weight-bold">Looks good!</div>
                 </div>
                 <div class="form-group">
-                  <input
+                  <label for="patient name">Age group</label>
+                  {/* <input
                     type="text"
                     id="ageGroup"
                     name="ageGroup"
@@ -123,7 +126,21 @@ export default class n_EditProgram extends Component {
                     onChange={this.handleInputChange}
                     pattern=".{8,}"
                     required
-                  />
+                  /> */}
+
+                  <select
+                    class="form-control"
+                    id="ageGroup"
+                    name="ageGroup"
+                    value={this.state.ageGroup}
+                    onChange={this.handleInputChange}
+                  >
+                    <option>1 - 8</option>
+                    <option>9 - 18</option>
+                    <option>19 - 30</option>
+                    <option>45+</option>
+                    <option>Any age group</option>
+                  </select>
 
                   <div class="invalid-feedback font-weight-bold">
                     Invalid Input.
@@ -132,7 +149,7 @@ export default class n_EditProgram extends Component {
                 </div>
                 <div class="row">
                   <div class="form-group col-md-6 mb-3">
-                    <label for="phone">gender</label>
+                    <label for="phone">Gender</label>
                     {/* <input
                       type="text"
                       id="gender"
@@ -163,7 +180,7 @@ export default class n_EditProgram extends Component {
                     </div>
                   </div>
                   <div class="form-group col-md-6 mb-3">
-                    <label for="phone">sample</label>
+                    <label for="phone">Sample</label>
                     <input
                       type="text"
                       id="sample"
@@ -197,7 +214,7 @@ export default class n_EditProgram extends Component {
 
               <Col lg={6} md={6} sm={12}>
                 <div class="form-group">
-                  <label for="phone">desc</label>
+                  <label for="phone">Description</label>
                   <textarea
                     type="text"
                     id="desc"
@@ -239,6 +256,11 @@ export default class n_EditProgram extends Component {
                   type="submit"
                   class="btn btn-success text-center btn-block"
                   onClick={this.onSubmit}
+                  style={{
+                    width: "250px",
+                    marginLeft: "400px",
+                    marginTop: "30px",
+                  }}
                 >
                   Submit
                 </button>

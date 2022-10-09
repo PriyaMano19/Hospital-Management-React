@@ -5,6 +5,12 @@ import logo from "../assets/logo.webp";
 import slide1 from "../assets/n_slide1.jpg";
 import slide2 from "../assets/n_slide2.jpg";
 import slide3 from "../assets/n_slide3.jpg";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
 export default class n_programs extends Component {
   constructor(props) {
@@ -38,23 +44,21 @@ export default class n_programs extends Component {
     });
   };
 
-  handleSearchArea = (e) => {
-    const searchKey = e.currentTarget.value;
+  //   handleSearchArea = (e) => {
+  //     const searchKey = e.currentTarget.value;
 
-    axios.get("http://localhost:8000/programs").then((res) => {
-      if (res.data.success) {
-        this.filterData(res.data.existingPrograms, searchKey);
-      }
-    });
-  };
+  //     axios.get("http://localhost:8000/programs").then((res) => {
+  //       if (res.data.success) {
+  //         this.filterData(res.data.existingPrograms, searchKey);
+  //       }
+  //     });
+  //   };
 
-  filterData(programs, searchKey) {
-    const result = programs.filter((program) =>
-      program.title.includes(searchKey)
-    );
+  //   filterData(users, searchKey) {
+  //     const result = users.filter((user) => user.userName.includes(searchKey));
 
-    this.setState({ programs: result });
-  }
+  //     this.setState({ users: result });
+  //   }
 
   render() {
     return (
@@ -63,45 +67,29 @@ export default class n_programs extends Component {
           className="font-weight-bold"
           style={{
             color: "black",
-            width: "250px",
-            fontSize: "30px",
+            fontSize: "40px",
             marginTop: "25px",
           }}
         >
-          All Programs
+          Medical Program - Packages
         </p>
-        <Row>
-          <Col lg={6} md={6} sm={12}>
-            <div className="col-lg-9 mt-2 mb-2">
-              <input
-                className="form-control"
-                type="search"
-                placeholder="search"
-                name="searchbar"
-                //onChange={this.handleSearchArea}
-                style={{
-                  width: "250px",
-                }}
-              ></input>
-            </div>
-          </Col>
-          <Col lg={4} md={6} sm={12}>
-            <button className="btn btn-info tab" type="submit">
-              <a
-                className="text-decoration-none text-dark "
-                href="/createProgram"
-              >
-                Add Medical Program
-              </a>
-              <i className="bi bi-box-arrow-in-right"></i>
-            </button>
-          </Col>
-        </Row>
+        <div className="col-lg-9 mt-2 mb-2">
+          <input
+            className="form-control"
+            type="search"
+            placeholder="search"
+            name="searchbar"
+            //onChange={this.handleSearchArea}
+            style={{
+              width: "250px",
+            }}
+          ></input>
+        </div>
         <>
           <Container className="mt-5">
             <Row>
               <Col lg={9} md={6} sm={12}>
-                <table class="table table-striped">
+                {/* <table class="table table-striped">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
@@ -150,7 +138,85 @@ export default class n_programs extends Component {
                       </tr>
                     ))}
                   </tbody>
-                </table>
+                </table> */}
+                {this.state.programs.map((programs, index) => (
+                  <Row>
+                    <Col lg={6} md={6} sm={12}>
+                      <Card sx={{ maxWidth: 345 }}>
+                        <CardMedia
+                          component="img"
+                          alt="green iguana"
+                          height="140"
+                          src={slide3}
+                        />
+                        <CardContent>
+                          <Typography gutterBottom variant="h5" component="div">
+                            {programs.title}
+                          </Typography>
+                          <Typography
+                            variant="body2"
+                            color="text.secondary"
+                            class="text-md-left"
+                          >
+                            Age Group &ensp;&nbsp;&nbsp;: &emsp;
+                            {programs.ageGroup}
+                            <br></br>
+                            Gender &emsp;&emsp;&nbsp;&nbsp;: &emsp;
+                            {programs.gender}
+                            <br></br>
+                            Samples &emsp;&emsp;&nbsp;: &emsp;{programs.sample}
+                            <br></br>
+                            Description &emsp;: &emsp;{programs.desc}
+                            <br></br>
+                            Price &emsp;&emsp;&emsp;&emsp;: &emsp;
+                            {programs.price}
+                          </Typography>
+                        </CardContent>
+                        <CardActions>
+                          <Button size="medium">Book Now</Button>
+                        </CardActions>
+                      </Card>
+                      <br></br>
+                    </Col>
+                    <Col lg={6} md={6} sm={12}>
+                      <Card sx={{ maxWidth: 345 }}>
+                        <CardMedia
+                          component="img"
+                          alt="green iguana"
+                          height="140"
+                          src={slide3}
+                        />
+                        <CardContent>
+                          <Typography gutterBottom variant="h5" component="div">
+                            {programs.title}
+                          </Typography>
+                          <Typography
+                            variant="body2"
+                            color="text.secondary"
+                            class="text-md-left"
+                          >
+                            Age Group &ensp;&nbsp;&nbsp;: &emsp;
+                            {programs.ageGroup}
+                            <br></br>
+                            Gender &emsp;&emsp;&nbsp;&nbsp;: &emsp;
+                            {programs.gender}
+                            <br></br>
+                            Samples &emsp;&emsp;&nbsp;: &emsp;{programs.sample}
+                            <br></br>
+                            Description &emsp;: &emsp;{programs.desc}
+                            <br></br>
+                            Price &emsp;&emsp;&emsp;&emsp;: &emsp;
+                            {programs.price}
+                          </Typography>
+                        </CardContent>
+                        <CardActions>
+                          <Button size="medium">Book Now</Button>
+                        </CardActions>
+                      </Card>
+                    </Col>
+                  </Row>
+                ))}
+                <br></br>
               </Col>
               <Col lg={3} md={6} sm={12}>
                 <br></br>

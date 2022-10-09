@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Col, Container, Row, Form, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import login from "../assets/n_notFound.svg";
+import dash from "../assets/n_dash.jpg";
 export default class n_home extends Component {
   state = {
     email: "",
@@ -57,18 +58,80 @@ export default class n_home extends Component {
   render() {
     return (
       <>
+        <div
+          style={{
+            marginTop: "25px",
+          }}
+        >
+          <h2> Admin Dashboad</h2>
+        </div>
         <Container className="mt-5">
           <Row>
-            <Col lg={12} md={6} sm={12}>
-              <h2 class="alert alert-info">Home Page Under Development</h2>
+            <Col lg={7} md={12} sm={12}>
+              <img class="d-block w-100" src={dash} alt="First slide"></img>
             </Col>
-            <img
-              class="login-img"
-              src={login}
-              style={{
-                marginLeft: "380px",
-              }}
-            />
+            <Col lg={3} md={12} sm={12}>
+              <button
+                className="btn btn-info tab"
+                type="submit"
+                style={{
+                  color: "black",
+                  fontSize: "40px",
+                  marginTop: "25px",
+                  width: "500px",
+                }}
+              >
+                <a className="text-decoration-none text-dark " href="/patients">
+                  Manage Patients
+                </a>
+                <i className="bi bi-box-arrow-in-right"></i>
+              </button>
+              <button
+                className="btn btn-info tab"
+                type="submit"
+                style={{
+                  color: "black",
+                  fontSize: "40px",
+                  marginTop: "25px",
+                  width: "500px",
+                }}
+              >
+                <a className="text-decoration-none text-dark " href="/programs">
+                  Manage Programs
+                </a>
+                <i className="bi bi-box-arrow-in-right"></i>
+              </button>
+              <button
+                className="btn btn-info tab"
+                type="submit"
+                style={{
+                  color: "black",
+                  fontSize: "40px",
+                  marginTop: "25px",
+                  width: "500px",
+                }}
+              >
+                <a className="text-decoration-none text-dark " href="/programs">
+                  Manage Doctors
+                </a>
+                <i className="bi bi-box-arrow-in-right"></i>
+              </button>
+              <button
+                className="btn btn-info tab"
+                type="submit"
+                style={{
+                  color: "black",
+                  fontSize: "40px",
+                  marginTop: "25px",
+                  width: "500px",
+                }}
+              >
+                <a className="text-decoration-none text-dark " href="/programs">
+                  Manage Rooms
+                </a>
+                <i className="bi bi-box-arrow-in-right"></i>
+              </button>
+            </Col>
           </Row>
         </Container>
       </>
