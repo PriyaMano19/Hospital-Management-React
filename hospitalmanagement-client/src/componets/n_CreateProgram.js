@@ -52,9 +52,9 @@ export default class n_CreateProgram extends Component {
           desc: "",
           price: "",
         });
-        alert("Registered Successfully");
+        alert("Added Successfully");
       } else {
-        alert("Registration Failed!!!");
+        alert("Added Failed!!!");
       }
     });
   };
@@ -65,7 +65,7 @@ export default class n_CreateProgram extends Component {
         <Container className="mt-12">
           <form class="text-left was-validated">
             <img class="icon-img-R" src={logo} />
-            <label for="Register" className="title font-weight-bold">
+            <label for="addProgram" className="title font-weight-bold">
               Medical Program
             </label>
             <Row>
@@ -171,9 +171,6 @@ export default class n_CreateProgram extends Component {
                     <div class="valid-feedback font-weight-bold">
                       Looks good!
                     </div>
-                    <div class="valid-feedback font-weight-bold">
-                      Looks good!
-                    </div>
                   </div>
                 </div>
                 {/* 
@@ -208,13 +205,14 @@ export default class n_CreateProgram extends Component {
                 </div>
 
                 <div class="form-group">
-                  <label for="phone">Price</label>
+                  <label for="price">Price</label>
                   <input
                     type="text"
                     id="price"
                     name="price"
                     class="form-control"
                     placeholder="Enter price"
+                    pattern="([0-9]).{6,}"
                     value={this.state.price}
                     onChange={this.handleInputChange}
                     required
@@ -222,7 +220,6 @@ export default class n_CreateProgram extends Component {
                   <div class="invalid-feedback font-weight-bold">
                     Invalid Input.
                   </div>
-                  <div class="valid-feedback font-weight-bold">Looks good!</div>
                   <div class="valid-feedback font-weight-bold">Looks good!</div>
                 </div>
 

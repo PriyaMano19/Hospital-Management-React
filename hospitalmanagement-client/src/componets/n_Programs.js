@@ -78,7 +78,7 @@ export default class n_programs extends Component {
                 type="search"
                 placeholder="search"
                 name="searchbar"
-                //onChange={this.handleSearchArea}
+                onChange={this.handleSearchArea}
                 style={{
                   width: "250px",
                 }}
@@ -108,9 +108,9 @@ export default class n_programs extends Component {
                       <th scope="col">Title</th>
                       <th scope="col">Age Group</th>
                       <th scope="col">Gender</th>
-                      <th scope="col">PasSample</th>
-                      <th scope="col">Desc</th>
-                      <th scope="col">Price</th>
+                      <th scope="col">Sample</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Price(Rs)</th>
                       <th scope="col">Action</th>
                     </tr>
                   </thead>

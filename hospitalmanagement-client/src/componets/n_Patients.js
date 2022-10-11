@@ -75,8 +75,29 @@ export default class n_Patients extends Component {
       columns: columns.map((col) => ({ ...col, dataKey: col.field })),
       body: this.state.users,
     });
+    doc.text(460, 200, "Printed Date : " + this.getCurrentDate());
+    doc.text(460, 215, "Printed Time : " + this.getTime());
     doc.save("Zone_patients.pdf");
   };
+
+  getCurrentDate(separator = ".") {
+    let newDate = new Date();
+    let date = newDate.getDate();
+    let month = newDate.getMonth() + 1;
+    let year = newDate.getFullYear();
+
+    return `${year}${separator}${
+      month < 10 ? `0${month}` : `${month}`
+    }${separator}${date}`;
+  }
+
+  getTime() {
+    var today = new Date(),
+      time =
+        today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+    return time;
+  }
 
   render() {
     return (

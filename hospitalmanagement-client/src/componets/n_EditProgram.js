@@ -175,9 +175,6 @@ export default class n_EditProgram extends Component {
                     <div class="invalid-feedback font-weight-bold">
                       Invalid Input.
                     </div>
-                    <div class="valid-feedback font-weight-bold">
-                      Looks good!
-                    </div>
                   </div>
                   <div class="form-group col-md-6 mb-3">
                     <label for="phone">Sample</label>
@@ -193,9 +190,6 @@ export default class n_EditProgram extends Component {
                     />
                     <div class="invalid-feedback font-weight-bold">
                       Invalid Input.
-                    </div>
-                    <div class="valid-feedback font-weight-bold">
-                      Looks good!
                     </div>
                     <div class="valid-feedback font-weight-bold">
                       Looks good!
@@ -234,7 +228,7 @@ export default class n_EditProgram extends Component {
                 </div>
 
                 <div class="form-group">
-                  <label for="phone">price</label>
+                  <label for="phone">Price</label>
                   <input
                     type="text"
                     id="price"
@@ -248,7 +242,6 @@ export default class n_EditProgram extends Component {
                   <div class="invalid-feedback font-weight-bold">
                     Invalid Input.
                   </div>
-                  <div class="valid-feedback font-weight-bold">Looks good!</div>
                   <div class="valid-feedback font-weight-bold">Looks good!</div>
                 </div>
 
