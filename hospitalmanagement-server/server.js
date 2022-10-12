@@ -7,6 +7,7 @@ app.use(cors());
 //import routes
 const userRoutes = require("./n_routes/n_users");
 const medicine = require('./n_routes/m_Medicine');
+const delivary = require('./route/m_delivary');
 //middleware
 app.use(bodyParser.json());
 
@@ -26,6 +27,7 @@ mongoose
 //mathy router
 
 app.use('/medicine', medicine);
+app.use('/delivary', delivary);
 app.listen(PORT, () => {
   console.log(`App is running on ${PORT}`);
 });
