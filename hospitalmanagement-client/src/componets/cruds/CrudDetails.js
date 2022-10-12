@@ -1,40 +1,48 @@
-import React, { useState } from "react";
-import { post } from "axios";
-import { useNavigate } from "react-router-dom";
-import Select from 'react-select';
+import React, { useState, useEffect } from "react";
+import { get, patch } from "axios";
+import { useNavigate, useParams } from "react-router-dom";
 
-
-
-function CrudAdd(props) {
+function CrudEdit(props) {
 	const initialState = {
 		companyName: "",
 		phone: "",
 		email: "",
-		location: " ",
-		link: " ",
+		location: "",
+		link: "",
 		description: "",
 	};
 	const [crud, setCrud] = useState(initialState);
 
-
-	
-	
-
+	const { _id } = useParams();
 	const navigate = useNavigate();
+
+	useEffect(
+		function () {
+			async function updateCrud() {
+				try {
+					const response = await get(`/api/cruds/${_id}`);
+					setCrud(response.data);
+				} catch (error) {
+					console.log(error);
+				}
+			}
+			updateCrud();
+		},
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		[props]
+	);
 
 	function handleSubmit(event) {
 		event.preventDefault();
-		//if (!crud.companyName || !crud.email) return;
-		async function postCrud() {
+		async function updateCrud() {
 			try {
-				const response = await post("/api/cruds/", crud);
-				navigate(`/cruds/list-view`);
-				// navigate(`/cruds/${response.data._id}`);
+				await patch(`/api/cruds/${crud._id}`, crud);
+				navigate(`/cruds/${crud._id}`);
 			} catch (error) {
-				console.log("error", error);
+				console.log(error);
 			}
 		}
-		postCrud();
+		updateCrud();
 	}
 
 	function handleChange(event) {
@@ -42,43 +50,39 @@ function CrudAdd(props) {
 	}
 
 	function handleCancel() {
-		navigate("/cruds");
+		navigate(`/cruds/${crud._id}`);
 	}
 
 	return (
-		<div className="container" style={{ maxWidth: "400px" }}>
-			<h1> Appointment </h1>
+		<div className="container">
+			<h1>Edit {crud.companyName}</h1>
 			<hr />
-			<form class name ="was-required"onSubmit={handleSubmit} required>
+			<form onSubmit={handleSubmit}>
+				
+		
 				<div className="form-group">
 					<label>Doctor Name</label>
-					<select
+					<input
 						name="companyName"
 						type="text"
-						required
 						value={crud.companyName}
 						onChange={handleChange}
 						className="form-control"
-					>
-							<option>select</option>
-						<option>DR.A.Peter</option>
-						<option>DR.T.Gishan</option>
-						<option>DR.K.Akil</option>
-						<option>DR.Mals</option>
-						</select>
-					<div className="form-group">
-					<label>patient name</label>
+					/>
+				</div>
+				<div className="form-group">
+					<label>Patient name</label>
 					<input
 						name="description"
+						type="text"
 						row="10"
 						value={crud.description}
 						onChange={handleChange}
 						className="form-control"
 					/>
 				</div>
-				</div>
 				<div className="form-group">
-					<label>Phone</label>
+					<label>Phone Number</label>
 					<input
 						name="phone"
 						type="tel"
@@ -102,48 +106,34 @@ function CrudAdd(props) {
 						className="form-control"
 					/>
 				</div>
-				
-				<div className="form-group">
-					<label>Date</label>
-					<select
-						name="link"
-						type="text"
-						value={crud.link}
-						onChange={handleChange}
-						className="form-control">
-							<option>select</option>
-						<option>3/11/22</option>
-						<option>5/11/22</option>
-						 <option>9/11/22</option>
-						</select>
-					
-	
-					
-				</div>
 				<div className="form-group">
 					<label>Time</label>
-					<select
+					<input
 						name="location"
 						type="text"
 						required
 						value={crud.location}
 						onChange={handleChange}
 						className="form-control"
-					>
-							<option>select</option>
-							<option>3.00 PM</option>
-						<option>4.00 PM</option>
-						 <option>5.00 PM</option>
-						
-					</select>
+					/>
 				</div>
-
-				
-                      <br/><br/>
-				<div className="btn-group">
+				<div className="form-group">
+					<label>Date</label>
+					<input
+						name="link"
+						type="text"
+						value={crud.link}
+						onChange={handleChange}
+						className="form-control"
+					/>
 					
-					<input type="submit" value="Submit" className="btn btn-primary" />
-					&nbsp;&nbsp;&nbsp;
+				</div>
+                    <br/><br/>
+				
+				<div className="btn-group">
+					<button type="submit" className="btn btn-primary">
+						Update
+					</button>
 					<button
 						type="button"
 						onClick={handleCancel}
@@ -157,4 +147,4 @@ function CrudAdd(props) {
 	);
 }
 
-export default CrudAdd;
+export default CrudEdit;

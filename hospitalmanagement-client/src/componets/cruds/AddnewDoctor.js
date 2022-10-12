@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { post } from "axios";
 import { useNavigate } from "react-router-dom";
@@ -5,19 +6,20 @@ import Select from 'react-select';
 
 
 
-function CrudAdd(props) {
+function AddnewDoctor(props) {
 	const initialState = {
 		companyName: "",
 		phone: "",
 		email: "",
-		location: " ",
+		location: "",
 		link: " ",
 		description: "",
 	};
 	const [crud, setCrud] = useState(initialState);
+	const [selects, setSelects] = useState();
 
 
-	
+	const Time = ["1.00", "2.00"];
 	
 
 	const navigate = useNavigate();
@@ -28,7 +30,7 @@ function CrudAdd(props) {
 		async function postCrud() {
 			try {
 				const response = await post("/api/cruds/", crud);
-				navigate(`/cruds/list-view`);
+				navigate(`/cruds`);
 				// navigate(`/cruds/${response.data._id}`);
 			} catch (error) {
 				console.log("error", error);
@@ -47,27 +49,21 @@ function CrudAdd(props) {
 
 	return (
 		<div className="container" style={{ maxWidth: "400px" }}>
-			<h1> Appointment </h1>
+			<h1> Doctor Details </h1>
 			<hr />
-			<form class name ="was-required"onSubmit={handleSubmit} required>
+			<form onSubmit={handleSubmit}>
 				<div className="form-group">
 					<label>Doctor Name</label>
-					<select
+					<input
 						name="companyName"
 						type="text"
 						required
 						value={crud.companyName}
 						onChange={handleChange}
 						className="form-control"
-					>
-							<option>select</option>
-						<option>DR.A.Peter</option>
-						<option>DR.T.Gishan</option>
-						<option>DR.K.Akil</option>
-						<option>DR.Mals</option>
-						</select>
+					/>
 					<div className="form-group">
-					<label>patient name</label>
+					<label>Experience</label>
 					<input
 						name="description"
 						row="10"
@@ -82,13 +78,13 @@ function CrudAdd(props) {
 					<input
 						name="phone"
 						type="tel"
-						pattern="(094)-[0-9]{}"
+						pattern="(251)-[0-9]{3}-[0-9]{6}"
 						required
 						value={crud.phone}
 						onChange={handleChange}
 						className="form-control"
 					/>
-					<small>Format: 094-XXXXXXXXX</small>
+					<small>Format: 251-XXX-XXXXXX</small>
 				</div>
 				<div className="form-group">
 					<label>Email</label>
@@ -102,40 +98,29 @@ function CrudAdd(props) {
 						className="form-control"
 					/>
 				</div>
-				
 				<div className="form-group">
-					<label>Date</label>
-					<select
-						name="link"
-						type="text"
-						value={crud.link}
-						onChange={handleChange}
-						className="form-control">
-							<option>select</option>
-						<option>3/11/22</option>
-						<option>5/11/22</option>
-						 <option>9/11/22</option>
-						</select>
-					
-	
-					
-				</div>
-				<div className="form-group">
-					<label>Time</label>
-					<select
+					<label>Speciality</label>
+					<input
 						name="location"
 						type="text"
 						required
 						value={crud.location}
 						onChange={handleChange}
 						className="form-control"
-					>
-							<option>select</option>
-							<option>3.00 PM</option>
-						<option>4.00 PM</option>
-						 <option>5.00 PM</option>
-						
-					</select>
+					/>
+				</div>
+				<div className="form-group">
+					<label>Date</label>
+					<input
+						name="link"
+						type="text"
+						required
+						value={crud.link}
+						onChange={handleChange}
+						className="form-control"/>
+					
+	
+					
 				</div>
 
 				
@@ -157,4 +142,4 @@ function CrudAdd(props) {
 	);
 }
 
-export default CrudAdd;
+export default AddnewDoctor;
