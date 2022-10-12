@@ -78,7 +78,7 @@ function NavBar() {
               </button>
               {/* &nbsp;&nbsp;
               <button className="btn btn-outline-info " type="submit">
-                <a className="text-decoration-none text-white" href="/add">
+                <a className="text-decoration-none text-white" href="/register">
                   Registration
                 </a>
                 <i className="bi bi-save2"></i>
