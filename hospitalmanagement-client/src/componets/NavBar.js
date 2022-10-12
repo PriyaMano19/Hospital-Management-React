@@ -10,8 +10,8 @@ function NavBar() {
           src={logo}
           style={{ height: "50px", width: "50px" }}
         />
-        <span className="text-info text-uppercase">
-          <h2>&nbsp;ZONE</h2>
+        <span className="text-uppercase text-teal-200 text-2xl mt-3 font-bold">
+          <p>&nbsp;ZONE</p>
         </span>
 
         <div className="container-fluid">
@@ -19,7 +19,11 @@ function NavBar() {
             <div className="container">
               <ul className="navbar-nav me-auto mb-6 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/home">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="/dashboad"
+                  >
                     Home
                   </a>
                 </li>
@@ -30,8 +34,17 @@ function NavBar() {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="/labdash"
+                  >
                     Book Lab Test
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/view">
+                    View Lab Appointments
                   </a>
                 </li>
                 <li class="nav-item">
@@ -44,41 +57,33 @@ function NavBar() {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a
-                    class="nav-link active"
-                    aria-current="page"
-                    href="/patientsProgram"
-                  >
+                  <a class="nav-link active" aria-current="page" href="/date">
                     Health Programs
                   </a>
                 </li>
 
                 <li class="nav-item">
-                  <a
-                    class="nav-link active"
-                    aria-current="page"
-                    href="/patients"
-                  >
-                    Patients
+                  <a class="nav-link active" aria-current="page" href="/about">
+                    About Us
                   </a>
                 </li>
               </ul>
             </div>
             <form className="d-flex" style={{ marginLeft: "260px" }}>
               <button className="btn btn-info tab" type="submit">
-                <a className="text-decoration-none text-dark " href="/login">
-                  Login
+                <a className="text-decoration-none text-dark " href="/Login">
+                  Profile
                 </a>
                 <i className="bi bi-box-arrow-in-right"></i>
               </button>
-              &nbsp;&nbsp;
+              {/* &nbsp;&nbsp;
               <button className="btn btn-outline-info " type="submit">
                 <a className="text-decoration-none text-white" href="/register">
                   Registration
                 </a>
                 <i className="bi bi-save2"></i>
               </button>
-              &nbsp;&nbsp;
+              &nbsp;&nbsp; */}
             </form>
           </div>
         </div>
