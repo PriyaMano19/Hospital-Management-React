@@ -227,6 +227,7 @@ export default class n_home extends Component {
                 </div>
               </Row>
             </Col>
+            {/* nishan */}
           </Row>
         </Container>
       </>
