@@ -1,7 +1,5 @@
 import './App.css';
 import NavBar from './componets/NavBar';
-import AddMedicines from './componets/m_AddMedicines';
-import MedicinesAdmin from './componets/m_MedicinesAdmin';
 import { BrowserRouter , Routes,Route } from 'react-router-dom';
 function App() {
   return (
