@@ -1,7 +1,6 @@
 import './App.css';
-import NavBar from './componets/NavBar';
-import Appointment from './componets/Appointment'
-import Resappointment from './componets/Resappointment';
+// import NavBar from './components/NavBar';
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from "./components/common/Navbar";
 import Home from "./components/pages/Home";
@@ -12,11 +11,12 @@ import CrudGridView from "./components/cruds/CrudGridView";
 import CrudDetails from "./components/cruds/CrudDetails";
 import CrudEdit from "./components/cruds/CrudEdit";
 import CrudDelete from "./components/cruds/CrudDelete";
-import Footer from "./components/common/Footer";
+
+
 function App() {
   return (
     <div className="App">
-      <NavBar />
+      <Navbar />
       <BrowserRouter>
       
       <Routes>
