@@ -2,14 +2,18 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const app = express();
+const cors = require("cors");
 
 //import routes
 const userRoutes = require("./n_routes/n_users");
+const programRoutes = require("./n_routes/n_programs");
 
 //middleware
 app.use(bodyParser.json());
+app.use(cors());
 
 app.use(userRoutes);
+app.use(programRoutes);
 
 const PORT = 8000;
 const DB_URL =

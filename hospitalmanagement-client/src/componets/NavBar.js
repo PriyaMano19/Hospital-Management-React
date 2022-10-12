@@ -10,72 +10,78 @@ function NavBar() {
           src={logo}
           style={{ height: "50px", width: "50px" }}
         />
-           <span className="text-info text-uppercase"><h2>&nbsp;ZONE</h2></span>
-           
-           <div className="container-fluid">
-        
+        <span className="text-info text-uppercase">
+          <h2>&nbsp;ZONE</h2>
+        </span>
+
+        <div className="container-fluid">
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <div className="container">
+            <div className="container">
+              <ul className="navbar-nav me-auto mb-6 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/home">
+                    Home
+                  </a>
+                </li>
 
-        
-                
-            
-            <ul className="navbar-nav me-auto mb-6 mb-lg-0">
-              <li class="nav-item">
-                
-                <a class="nav-link active" aria-current="page" href="/dashboad">
-                  Home
-                </a>
-              </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/add">
+                    Book Appointment
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/">
+                    Book Lab Test
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="/workshop"
+                  >
+                    Buy Medicines
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="/patientsProgram"
+                  >
+                    Health Programs
+                  </a>
+                </li>
 
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/add">
-                 Book Appointment
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">
-                  Book Lab Test
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/workshop">
-                  Buy Medicines
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/date">
-                 Health Programs
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/about">
-                  About Us
-                </a>
-              </li>
-              
-            </ul>
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="/patients"
+                  >
+                    Patients
+                  </a>
+                </li>
+              </ul>
             </div>
-            <form className="d-flex" style={{ marginLeft: "260px" ,}}>
+            <form className="d-flex" style={{ marginLeft: "260px" }}>
               <button className="btn btn-info tab" type="submit">
-                <a className="text-decoration-none text-dark " href="/Login" >
+                <a className="text-decoration-none text-dark " href="/login">
                   Login
                 </a>
                 <i className="bi bi-box-arrow-in-right"></i>
               </button>
-              &nbsp;&nbsp; 
+              &nbsp;&nbsp;
               <button className="btn btn-outline-info " type="submit">
-                <a className="text-decoration-none text-white" href="/add">
+                <a className="text-decoration-none text-white" href="/register">
                   Registration
                 </a>
                 <i className="bi bi-save2"></i>
               </button>
-              &nbsp;&nbsp; 
+              &nbsp;&nbsp;
             </form>
           </div>
         </div>
-       
       </nav>
     </div>
   );
