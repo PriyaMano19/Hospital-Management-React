@@ -5,12 +5,20 @@ import CreateIcon from "@mui/icons-material/Create";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import { adddata, updatedata, deldata } from "./context/ContextProvider";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 function P_ViewAllAppointments() {
   const { udata, setUdata } = useContext(adddata);
   const { updata, setUPdata } = useContext(updatedata);
 
   const { dltdata, setDLTdata } = useContext(deldata);
   const [getpatientdata, setPatientdata] = useState([]);
+  const [search, setSearch] = useState("");
+
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+  };
+
   console.log(getpatientdata);
 
   function GetDateOnly(date) {
@@ -29,7 +37,7 @@ function P_ViewAllAppointments() {
     });
 
     const data = await res.json();
-    console.log(data);
+    setPatientdata(data);
 
     if (res.status === 422 || !data) {
       console.log("error ");
@@ -38,7 +46,11 @@ function P_ViewAllAppointments() {
       console.log("get data");
     }
   };
-
+  const data = {
+    nodes: getpatientdata.filter((item) =>
+      item.name.toLowerCase().includes(search.toLowerCase())
+    ),
+  };
   useEffect(() => {
     getdata();
   }, []);
@@ -57,12 +69,30 @@ function P_ViewAllAppointments() {
     if (res2.status === 422 || !deletedata) {
       console.log("error");
     } else {
-      console.log("user deleted");
+      console.log("Patient deleted");
 
       getdata();
     }
   };
+  const pdfGenerate = (getpatientdata) => {
+    var doc = new jsPDF("landscape", "px", "a4", "false");
+    const columns = [
+      { title: "Full Name", field: "name" },
+      { title: "Age", field: "age" },
+      { title: "Address", field: "address" },
+      { title: "MobileNumber", field: "mobile" },
+      { title: "Date", field: "date" },
+      { title: "Report Date", field: "rdate" },
+    ];
+    const tableRows = [getpatientdata];
 
+    doc.text(70, 10, "Patients' Lab Test Details");
+    doc.autoTable({
+      columns: columns.map((col) => ({ ...col, dataKey: col.field })),
+      body: this.state.getpatientdata,
+    });
+    doc.save("LabTest_Details.pdf");
+  };
   return (
     <>
       {udata ? (
@@ -89,7 +119,7 @@ function P_ViewAllAppointments() {
             class="alert alert-success alert-dismissible fade show"
             role="alert"
           >
-            <strong>{updata.name}</strong> updated succesfully!
+            Assigned Report date for <strong>{updata.name}</strong>
             <button
               type="button"
               class="btn-close"
@@ -123,7 +153,30 @@ function P_ViewAllAppointments() {
 
       <div className="mt-5">
         <div className="container">
-          <table class="table">
+          <div className="mb-3">
+            <button
+              className="btn btn-primary text-left"
+              style={{ marginRight: "210px" }}
+              onClick={() => pdfGenerate(getpatientdata)}
+            >
+              {" "}
+              <i className="fas fa-print"></i>&nbsp;&nbsp;
+              <a className="text-decoration-none text-white " href="/">
+                Export
+              </a>
+            </button>
+          </div>
+          <div className="float-right w-56 mb-3">
+            {" "}
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Search"
+              aria-label="Search"
+            />
+          </div>
+
+          <table id="example" class="table" data={data}>
             <thead>
               <tr className="table-dark">
                 <th scope="col">#ID</th>
@@ -133,8 +186,10 @@ function P_ViewAllAppointments() {
                 <th scope="col">MobileNumber</th>
                 <th scope="col">Date</th>
                 <th scope="col">Report Date</th>
-                {/* <th scope="col">Cancel</th> */}
-                <th scope="col">Action</th>
+                <th scope="col" className="text-center">
+                  Assign Report Date
+                </th>
+                <th scope="col">Cancel</th>
               </tr>
             </thead>
             <tbody>
@@ -148,6 +203,7 @@ function P_ViewAllAppointments() {
                       <td>{element.address}</td>
                       <td>{element.mobile}</td>
                       <td>{GetDateOnly(element.date)}</td>
+                      <td>{GetDateOnly(element.rdate)}</td>
                       {/* <td>
                 <button className="btn btn-primary">
                   <i class="fas fa-calendar"></i>
@@ -159,22 +215,19 @@ function P_ViewAllAppointments() {
                   <i class="fas fa-ban"></i>
                 </button>
               </td> */}
-                      <td className="d-flex justify-content-between">
-                        <NavLink to={`view/${element._id}`}>
+                      <td className="d-flex ml-3">
+                        {/* <NavLink to={`view/${element._id}`}>
                           <button className="btn btn-success">
                             <RemoveRedEyeIcon />
                           </button>
-                        </NavLink>
-                        <NavLink to={`edit/${element._id}`}>
-                          <button className="btn btn-primary">
-                            <CreateIcon />
-                          </button>
-                        </NavLink>
-                        {/* <NavLink to={`edit/${element._id}`}>
+                        </NavLink> */}
+                        <NavLink to={`editdate/${element._id}`}>
                           <button className="btn btn-primary">
                             <CalendarTodayIcon />
                           </button>
-                        </NavLink> */}
+                        </NavLink>
+                      </td>
+                      <td>
                         <button
                           className="btn btn-danger"
                           onClick={() => deletepatient(element._id)}

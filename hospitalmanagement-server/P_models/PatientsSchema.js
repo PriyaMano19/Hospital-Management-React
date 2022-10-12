@@ -27,6 +27,9 @@ const patientsSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  rdate: {
+    type: Date,
+  },
 });
 
 const patients = new mongoose.model("patients", patientsSchema);

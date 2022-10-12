@@ -9,6 +9,7 @@ import P_Booking from "./P_Views/P_Booking";
 import P_Form from "./P_Views/P_Form";
 import P_UserEdit from "./P_Views/P_UserEdit";
 import P_Details from "./P_Views/P_Details";
+import P_AssignDate from "./P_Views/P_AssignDate";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/form" element={<P_Form />} />
           <Route path="/edit/:id" element={<P_UserEdit />} />
           <Route path="/view" element={<P_Details />} />
+          <Route path="/editdate/:id" element={<P_AssignDate />} />
           {/* <Route path="/view/:id" element={<P_Details />} /> */}
         </Routes>
       </BrowserRouter>

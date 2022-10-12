@@ -10,7 +10,7 @@ function NavBar() {
           src={logo}
           style={{ height: "50px", width: "50px" }}
         />
-        <span className="text-uppercase text-white text-2xl mt-3 font-bold">
+        <span className="text-uppercase text-teal-200 text-2xl mt-3 font-bold">
           <p>&nbsp;ZONE</p>
         </span>
 
