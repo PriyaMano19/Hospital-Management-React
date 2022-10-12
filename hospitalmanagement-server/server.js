@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const app = express();
 const patients = require("./P_models/PatientsSchema");
 const cors = require("cors");
@@ -14,7 +15,7 @@ app.use(router);
 mongoose
   .connect(DB_URL)
   .then(() => {
-    console.log("Database connected successfully!!!");
+    console.log("Database connected successfully!!");
   })
   .catch((err) => console.log("Database connection error", err));
 
