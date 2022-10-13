@@ -7,17 +7,14 @@ import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import { adddata, updatedata, deldata } from "./context/ContextProvider";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+
 function P_ViewAllAppointments() {
   const { udata, setUdata } = useContext(adddata);
   const { updata, setUPdata } = useContext(updatedata);
 
   const { dltdata, setDLTdata } = useContext(deldata);
   const [getpatientdata, setPatientdata] = useState([]);
-  const [search, setSearch] = useState("");
-
-  const handleSearch = (event) => {
-    setSearch(event.target.value);
-  };
+  const [searchTerm, setSearchTerm] = useState("");
 
   console.log(getpatientdata);
 
@@ -46,11 +43,7 @@ function P_ViewAllAppointments() {
       console.log("get data");
     }
   };
-  const data = {
-    nodes: getpatientdata.filter((item) =>
-      item.name.toLowerCase().includes(search.toLowerCase())
-    ),
-  };
+
   useEffect(() => {
     getdata();
   }, []);
@@ -93,6 +86,7 @@ function P_ViewAllAppointments() {
     });
     doc.save("LabTest_Details.pdf");
   };
+
   return (
     <>
       {udata ? (
@@ -153,7 +147,7 @@ function P_ViewAllAppointments() {
 
       <div className="mt-5">
         <div className="container">
-          <div className="mb-3">
+          <div className="mb-1">
             <button
               className="btn btn-primary text-left"
               style={{ marginRight: "210px" }}
@@ -173,10 +167,13 @@ function P_ViewAllAppointments() {
               type="text"
               placeholder="Search"
               aria-label="Search"
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+              }}
             />
           </div>
 
-          <table id="example" class="table" data={data}>
+          <table id="example" class="table">
             <thead>
               <tr className="table-dark">
                 <th scope="col">#ID</th>
@@ -193,52 +190,49 @@ function P_ViewAllAppointments() {
               </tr>
             </thead>
             <tbody>
-              {getpatientdata.map((element, id) => {
-                return (
-                  <>
-                    <tr>
-                      <th scope="row">{id + 1}</th>
-                      <td>{element.name}</td>
-                      <td>{element.age}</td>
-                      <td>{element.address}</td>
-                      <td>{element.mobile}</td>
-                      <td>{GetDateOnly(element.date)}</td>
-                      <td>{GetDateOnly(element.rdate)}</td>
-                      {/* <td>
-                <button className="btn btn-primary">
-                  <i class="fas fa-calendar"></i>
-                </button>
-              </td>
-              <td>
-                {" "}
-                <button className="btn btn-danger">
-                  <i class="fas fa-ban"></i>
-                </button>
-              </td> */}
-                      <td className="d-flex ml-3">
-                        {/* <NavLink to={`view/${element._id}`}>
-                          <button className="btn btn-success">
-                            <RemoveRedEyeIcon />
+              {getpatientdata
+                .filter((element) => {
+                  if (searchTerm == "") {
+                    return element;
+                  } else if (
+                    element.name
+                      .toLowerCase()
+                      .includes(searchTerm.toLowerCase())
+                  ) {
+                    return element;
+                  }
+                })
+                .map((element, id) => {
+                  return (
+                    <>
+                      <tr>
+                        <th scope="row">{id + 1}</th>
+                        <td>{element.name}</td>
+                        <td>{element.age}</td>
+                        <td>{element.address}</td>
+                        <td>{element.mobile}</td>
+                        <td>{GetDateOnly(element.date)}</td>
+                        <td>{GetDateOnly(element.rdate)}</td>
+
+                        <td className="d-flex ml-3">
+                          <NavLink to={`editdate/${element._id}`}>
+                            <button className="btn btn-primary">
+                              <CalendarTodayIcon />
+                            </button>
+                          </NavLink>
+                        </td>
+                        <td>
+                          <button
+                            className="btn btn-danger"
+                            onClick={() => deletepatient(element._id)}
+                          >
+                            <DeleteOutlineIcon />
                           </button>
-                        </NavLink> */}
-                        <NavLink to={`editdate/${element._id}`}>
-                          <button className="btn btn-primary">
-                            <CalendarTodayIcon />
-                          </button>
-                        </NavLink>
-                      </td>
-                      <td>
-                        <button
-                          className="btn btn-danger"
-                          onClick={() => deletepatient(element._id)}
-                        >
-                          <DeleteOutlineIcon />
-                        </button>
-                      </td>
-                    </tr>
-                  </>
-                );
-              })}
+                        </td>
+                      </tr>
+                    </>
+                  );
+                })}
             </tbody>
           </table>
         </div>
