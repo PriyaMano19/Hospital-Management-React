@@ -189,7 +189,30 @@ class DeliveryDetails extends Component {
                   </tbody>
                 </table>
               </div>
+              <div class="row">
+              <div class="col-sm">
+
+              </div>
+              <div class="col-sm">
+                
+              </div>
+              <div class="col-sm" style={{paddingLeft:"600px"}}>
+              <button
+                            type="button"
+                            class="btn btn-info"
+                            onClick={this.jsPdfGenerator}
+                          >
+                            <i class="bi bi-printer-fill"> PRINT</i>
+                        
+                          </button>
+                          <br/> <br/> 
+                         
+              </div>
+             
+              </div>
+             
             </div>
+           
           </div>
         </div>
         
@@ -235,8 +258,11 @@ class DeliveryDetails extends Component {
                 </button>
               </div>
             </div>
+           
           </div>
+         
         </div>
+       
       </div>
     );
   }
