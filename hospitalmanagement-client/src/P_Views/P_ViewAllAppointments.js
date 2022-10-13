@@ -74,7 +74,7 @@ function P_ViewAllAppointments() {
       getdata();
     }
   };
-  const pdfGenerate = (getpatientdata) => {
+  const pdfGenerate = () => {
     var doc = new jsPDF("landscape", "px", "a4", "false");
     const columns = [
       { title: "Full Name", field: "name" },
@@ -89,7 +89,7 @@ function P_ViewAllAppointments() {
     doc.text(70, 10, "Patients' Lab Test Details");
     doc.autoTable({
       columns: columns.map((col) => ({ ...col, dataKey: col.field })),
-      body: this.state.getpatientdata,
+      body: getpatientdata,
     });
     doc.save("LabTest_Details.pdf");
   };
@@ -157,7 +157,7 @@ function P_ViewAllAppointments() {
             <button
               className="btn btn-primary text-left"
               style={{ marginRight: "210px" }}
-              onClick={() => pdfGenerate(getpatientdata)}
+              onClick={() => pdfGenerate()}
             >
               {" "}
               <i className="fas fa-print"></i>&nbsp;&nbsp;
