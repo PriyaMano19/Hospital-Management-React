@@ -147,30 +147,35 @@ function P_ViewAllAppointments() {
 
       <div className="mt-5">
         <div className="container">
-          <div className="mb-1">
-            <button
-              className="btn btn-primary text-left"
-              style={{ marginRight: "210px" }}
-              onClick={() => pdfGenerate()}
-            >
+          <p className="text-center font-bold text-5xl text-blue-800 hover:text-blue-700 text-opacity-100 hover:underline mt-2">
+            All Laboratory Testing Appointments
+          </p>
+          <div class="flex space-x-64">
+            <div className="mb-1">
+              <button
+                className="btn btn-primary text-left"
+                style={{ marginRight: "210px" }}
+                onClick={() => pdfGenerate()}
+              >
+                {" "}
+                <i className="fas fa-print"></i>&nbsp;&nbsp;
+                <a className="text-decoration-none text-white " href="/">
+                  Export
+                </a>
+              </button>
+            </div>
+            <div className="float-right w-64 mb-3 ">
               {" "}
-              <i className="fas fa-print"></i>&nbsp;&nbsp;
-              <a className="text-decoration-none text-white " href="/">
-                Export
-              </a>
-            </button>
-          </div>
-          <div className="float-right w-56 mb-3">
-            {" "}
-            <input
-              class="form-control"
-              type="text"
-              placeholder="Search"
-              aria-label="Search"
-              onChange={(e) => {
-                setSearchTerm(e.target.value);
-              }}
-            />
+              <input
+                class="form-control"
+                type="text"
+                placeholder="Search"
+                aria-label="Search"
+                onChange={(e) => {
+                  setSearchTerm(e.target.value);
+                }}
+              />
+            </div>
           </div>
 
           <table id="example" class="table">
