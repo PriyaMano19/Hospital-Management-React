@@ -83,7 +83,8 @@ function NavBar() {
                 </a>
                 <i className="bi bi-save2"></i>
               </button>
-              &nbsp;&nbsp; */}
+              &nbsp;&nbsp; *
+              /}
             </form>
           </div>
         </div>
