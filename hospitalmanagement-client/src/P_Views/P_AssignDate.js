@@ -95,7 +95,7 @@ function P_UserEdit() {
           Edit Your Appointment
         </p>
         <div class="btn-group-toggle" data-toggle="buttons">
-          <Link to="/view">
+          <Link to="/">
             <p className="text-left font-bold text-xl text-blue-800 hover:text-blue-700 text-opacity-100 -mt-8 ml-3">
               <LeftCircleOutlined style={{ fontSize: "26px" }} /> Back
             </p>
