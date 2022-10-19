@@ -13,6 +13,7 @@ import P_AssignDate from "./P_Views/P_AssignDate";
 function App() {
   return (
     <div className="App">
+      <Navbar />
       <BrowserRouter>
         <NavBar />
         <Routes>
