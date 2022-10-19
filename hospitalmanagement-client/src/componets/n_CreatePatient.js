@@ -77,7 +77,7 @@ export default class n_CreatePatient extends Component {
                     placeholder="Enter Name"
                     value={this.state.userName}
                     onChange={this.handleInputChange}
-                    pattern=".{8,}"
+                    pattern="[a-z]{8.}"
                     title="Eight or more characters"
                     required
                   />
@@ -115,7 +115,7 @@ export default class n_CreatePatient extends Component {
                       placeholder="Enter Phone Number"
                       value={this.state.phone}
                       onChange={this.handleInputChange}
-                      pattern=".{10}"
+                      pattern="[0-9]{10}"
                       title="Eight or more characters"
                       required
                     />
