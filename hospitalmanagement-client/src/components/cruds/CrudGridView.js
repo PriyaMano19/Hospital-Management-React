@@ -72,6 +72,16 @@ function CrudGridView() {
 									</Link>
 									
 								</div>
+
+								<div class="card-footer d-flex align-items-center">
+									<Link
+										to={`/cruds/${cruds._id}/edit`}
+										className="btn btn-primary"
+									>
+										Edit
+									</Link>
+									
+								</div>
 							</div>
 						);
 					})}
