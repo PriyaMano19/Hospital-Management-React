@@ -7,6 +7,9 @@ import logo from "../assets/logo.webp";
 import userManagement from "../assets/userManagement.png";
 import labManagement from "../assets/labManagement.png";
 import programManagement from "../assets/programManagement.png";
+import medicine from "../assets/medicine.png";
+import doctor from "../assets/doctor.png";
+import delivery from "../assets/vehicle.png";
 // import "./n_design.css";
 export default class n_home extends Component {
   state = {
@@ -78,8 +81,8 @@ export default class n_home extends Component {
                 src={logo}
                 alt="First slide"
                 style={{
-                  height: "450px",
-                  width: "450px",
+                  height: "650px",
+                  width: "650px",
                 }}
               ></img>
             </Col>
@@ -205,20 +208,87 @@ export default class n_home extends Component {
                           width: "200px",
                         }}
                       >
-                        <a
-                          className="text-decoration-none text-dark "
-                          href="/programs"
-                        >
+                        <a className="text-decoration-none text-dark " href="#">
                           <img
                             class="d-block w-100"
-                            src={programManagement}
+                            src={delivery}
                             alt="First slide"
                             style={{
                               height: "150px",
                               width: "150px",
                             }}
                           ></img>
-                          Manage Programs
+                          Delivery Management
+                        </a>
+                        <i className="bi bi-box-arrow-in-right"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </Row>
+              <Row>
+                <div
+                  class="container"
+                  style={{
+                    marginTop: "40px",
+                  }}
+                >
+                  <div class="row">
+                    <div class="col">
+                      {" "}
+                      <button
+                        className="btn btn-info tab"
+                        type="submit"
+                        style={{
+                          color: "black",
+                          fontSize: "20px",
+                          background: "white",
+                          height: "200px",
+                          width: "200px",
+                        }}
+                      >
+                        <a className="text-decoration-none text-dark " href="#">
+                          <img
+                            class="d-block w-100"
+                            src={doctor}
+                            alt="First slide"
+                            style={{
+                              height: "150px",
+                              width: "150px",
+                            }}
+                          ></img>
+                          Doctor Management
+                        </a>
+                        <i className="bi bi-box-arrow-in-right"></i>
+                      </button>
+                    </div>
+                    <div class="col">
+                      {" "}
+                      <button
+                        className="btn btn-info tab dasButton"
+                        type="submit"
+                        style={{
+                          color: "black",
+                          fontSize: "20px",
+                          background: "white",
+                          height: "200px",
+                          width: "200px",
+                        }}
+                      >
+                        <a
+                          className="text-decoration-none text-dark "
+                          href="/programs"
+                        >
+                          <img
+                            class="d-block w-100"
+                            src={medicine}
+                            alt="First slide"
+                            style={{
+                              height: "150px",
+                              width: "150px",
+                            }}
+                          ></img>
+                          Manage Medicine
                         </a>
                         <i className="bi bi-box-arrow-in-right"></i>
                       </button>
@@ -227,7 +297,6 @@ export default class n_home extends Component {
                 </div>
               </Row>
             </Col>
-            {/* nishan */}
           </Row>
         </Container>
       </>
