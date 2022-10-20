@@ -47,7 +47,7 @@ function P_Details() {
   useEffect(() => {
     getdata();
   }, []);
-
+  // card view
   const deletepatient = async (id) => {
     const res2 = await fetch(`http://localhost:8000/deletepatient/${id}`, {
       method: "DELETE",

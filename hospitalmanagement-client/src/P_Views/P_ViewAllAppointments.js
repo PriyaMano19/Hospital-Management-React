@@ -177,7 +177,7 @@ function P_ViewAllAppointments() {
               />
             </div>
           </div>
-
+          {/* //table view */}
           <table id="example" class="table">
             <thead>
               <tr className="table-dark">
