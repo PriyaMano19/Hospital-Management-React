@@ -3,29 +3,29 @@ const mongoose = require("mongoose");
 const patientsSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
+    required: false,
   },
   age: {
     type: String,
-    required: true,
+    required: false,
   },
   address: {
     type: String,
-    required: true,
+    required: false,
   },
   mobile: {
     type: Number,
-    required: true,
+    required: false,
     unique: true,
     maxLength: 10,
   },
   gender: {
     type: String,
-    required: true,
+    required: false,
   },
   date: {
     type: Date,
-    required: true,
+    required: false,
   },
   rdate: {
     type: Date,
