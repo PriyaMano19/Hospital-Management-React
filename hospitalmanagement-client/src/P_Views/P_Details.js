@@ -107,7 +107,7 @@ function P_Details() {
       ) : (
         ""
       )}
-      <div className="container mt-3">
+      <div className="container mt-3 text-right">
         <h1 style={{ fontWeight: 400 }}></h1>
         {getpatientdata.map((element) => {
           return (
