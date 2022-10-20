@@ -146,7 +146,7 @@ function P_ViewAllAppointments() {
       )}
 
       <div className="mt-5">
-        <div className="container">
+        <div className="container text-right">
           <p className="text-center font-bold text-5xl text-blue-800 hover:text-blue-700 text-opacity-100 hover:underline mt-2">
             All Laboratory Testing Appointments
           </p>
