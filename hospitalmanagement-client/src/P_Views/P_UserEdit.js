@@ -98,7 +98,7 @@ function P_UserEdit() {
 
   return (
     <div class="h-14 bg-gradient-to-r from-cyan-500 to-blue-500">
-      <div className="container mt-5 bg-white shadow-xl rounded border-2 border-gray-600 ">
+      <div className="container mt-5 bg-white shadow-xl rounded border-2 border-gray-600 text-right">
         <p className="text-center font-bold text-5xl text-blue-800 hover:text-blue-700 text-opacity-100 hover:underline ">
           Edit Your Appointment
         </p>
